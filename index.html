@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery and APIs Example</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script>
+    var ARTICLES_API_URL = 'http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=e8b9bdd9df337205541989dfd35418e2:1:73520418';
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG3ub4svuOzl84enJsp0sT9YUnOSX7kSU&callback=initMap" async defer>
+    </script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+    /*
+    This function gets called by Google Maps once the service is initialized.
+     */
+    function initMap() {
+
+    }
+
+    /*
+    Puts a marker on the given latLng coordinates with the supplied text
+     */
+    function makeMarker(latLng, text) {
+
+    }
+
+    /*
+    Calls the (async) geocoding service and then puts the coordinates on the map
+     */
+    function putOnMap(article) {
+
+    }
+    </script>
+</body>
+</html>
