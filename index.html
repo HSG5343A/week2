@@ -28,8 +28,13 @@
     This function gets called by Google Maps once the service is initialized.
      */
     function initMap() {
+     map = new google.maps.Map(document.getElementById('map'), {
+           center: {lat: -34.397, lng: 150.644},
+           zoom: 20
+         });
 
     }
+
 
     /*
     Puts a marker on the given latLng coordinates with the supplied text
