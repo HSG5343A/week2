@@ -29,7 +29,13 @@
      */
     function initMap() {
 
-    }
+        alert('kutey loves bareburger!');
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.7142700  , lng:  -74.0059700
+},
+          zoom: 16
+        });
+      }
 
     /*
     Puts a marker on the given latLng coordinates with the supplied text
