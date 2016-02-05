@@ -28,7 +28,10 @@
     This function gets called by Google Maps once the service is initialized.
      */
     function initMap() {
-
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 39.554, lng: 116.231},
+          zoom: 8
+        });
     }
 
     /*
