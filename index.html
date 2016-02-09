@@ -7,7 +7,7 @@
     <script>
     var ARTICLES_API_URL = 'http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=e8b9bdd9df337205541989dfd35418e2:1:73520418';
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG3ub4svuOzl84enJsp0sT9YUnOSX7kSU&callback=initMap" async defer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ03iSha2zITBsdcEuVpmUWFFXSI_ZVNY&callback=initMap" async defer>
     </script>
     <style>
       html, body {
@@ -28,7 +28,22 @@
     This function gets called by Google Maps once the service is initialized.
      */
     function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.7127, lng: -74.0059},
+          zoom: 10
+        });
 
+        $.get(ARTICLES_API_URL, function(response) {
+          var articles = response.results;
+
+          for(var i=0;  i<articles.length; i++) {
+            var article = articles[i];
+            if(article.geo_facet) {
+              console.log(article);
+              putOnMap(article);
+            }
+          }
+        });
     }
 
     /*
@@ -42,7 +57,8 @@
     Calls the (async) geocoding service and then puts the coordinates on the map
      */
     function putOnMap(article) {
-
+      // https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple
+      
     }
     </script>
 </body>
