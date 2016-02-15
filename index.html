@@ -9,6 +9,7 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG3ub4svuOzl84enJsp0sT9YUnOSX7kSU&callback=initMap" async defer>
     </script>
+
     <style>
       html, body {
         height: 100%;
@@ -28,12 +29,34 @@
     This function gets called by Google Maps once the service is initialized.
      */
     function initMap() {
+        var latLng = {lat: 40.7142700  , lng:  -74.0059700};
+        
+        window.map = new google.maps.Map(document.getElementById('map'), {
+          center: latLng,
+          zoom: 8
+        });
 
-        alert('kutey loves bareburger!');
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.7142700  , lng:  -74.0059700
-},
-          zoom: 16
+        makeMarker(latLng, 'Give me a burger');
+
+        /*var geocoder = new google.maps.Geocoder();
+
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });*/
+
+
+
+        $.get(ARTICLES_API_URL, function(response){
+          var articles = response.results;
+          console.log(articles);
+
+          for(var i=0; i < articles.length; i++){
+            var articles = articles[i];
+            if(article.geo_facet){
+            console.log(articles[i]);
+            putOnMap(article);
+          }
+          }
         });
       }
 
@@ -41,6 +64,12 @@
     Puts a marker on the given latLng coordinates with the supplied text
      */
     function makeMarker(latLng, text) {
+
+       var marker = new google.maps.Marker({
+            position: latLng,
+            map: window.map,
+            title: text
+          });
 
     }
 
