@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+j<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,21 +31,46 @@
       map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 39.554, lng: 116.231},
           zoom: 8
-        });
-    }
+      });
 
+      $.get(ARTICLES_API_URL, function(response) {
+        var articles = response.results;
+
+        for (var i = 0; i < articles.length; i++) {
+          var article = articles[i];
+          if(article.geo_facet) {
+            console.log(article);
+            putOnMap(article);
+          }
+        }
+      });
+    }
     /*
     Puts a marker on the given latLng coordinates with the supplied text
      */
     function makeMarker(latLng, text) {
+      var marker = new google.maps.Marker([
+        position:latLng,
+        map: window.map,
+        title: text
 
+      ]);
     }
 
     /*
     Calls the (async) geocoding service and then puts the coordinates on the map
      */
     function putOnMap(article) {
-
+      var address = article.geo_facet[0];
+      geocoder.geocode({"address: address"}, function(results, status) {
+        if(status == "OK") {
+          makeMarker(results[0].geometry.location, article.title);
+        }
+        else {
+          concole.error()
+        }
+      });
+      makeMarker(latLng, article.title);
     }
     </script>
 </body>
