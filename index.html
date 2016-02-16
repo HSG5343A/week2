@@ -33,7 +33,18 @@
           center: {lat: 40.7142700, lng: -74.0059700},
           zoom: 8
         });
-      }
+        $.get(ARTICLES_API_URL, function(response) {
+          var articles = response.results;
+
+          for(var i=0; i<articles.length; i++) {
+            var article = articles[i];
+            if(article.geo_facet) {
+            console.log(articles[i]);
+            putOnMap(article);
+            }
+          }
+        });
+    }
 
     /*
     Puts a marker on the given latLng coordinates with the supplied text
